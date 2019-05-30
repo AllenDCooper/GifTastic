@@ -1,9 +1,9 @@
 // Create an array (var searchWords) of search words
- var searchWords = ["anger", "annoyance", "sadness", "jealousy", "joy", "confusion", "kindness", "love", "hope", "eagerness"]
+ var topics = ["anger", "annoyance", "sadness", "jealousy", "joy", "confusion", "kindness", "love", "hope", "eagerness"]
 
-// Create a function (printSearchWords) that takes an array as a assignment
+// Create a function (printTopics) that takes an array as a assignment
 
-function printSearchWords (arr) {
+function printTopics (arr) {
 
     // When called, function loops through the array, creating a button for each value in the array
     for (i = 0; i < arr.length; i++) {
@@ -25,15 +25,16 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q="
 // Create a function (returnGifs) that takes a string as an assignment, and that uses Ajax get method to return ten gifs and their ratings for the search term, and then prints them to the page.
 
 function returnGifs(string) {
-    // clear out gif display
+    // clears out gif display
     $("#gif-display").text("")
+
     // Creates a queryURL for Ajax method that includes the GIPHY API url + "q=" + stringparameter + "&api_key=" + APIkey + "&limit=10"
     $.ajax({
-        url: "https://api.giphy.com/v1/gifs/search?q=" + string + "&api_key=" + apiKey + "&limit=11",
+        url: queryURL + string + "&api_key=" + apiKey + "&limit=10",
         method: "GET",
     }).then(function(response){
         // When called, function loops through the returned data array, creating an img element for each object
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             // function stores the still url as the data-still attribute for the image
             var gifImage = $("<img>");
             gifImage.attr("id", "gif-image");
@@ -58,18 +59,17 @@ function returnGifs(string) {
     })
 }
 $(document).ready(function() {
-    printSearchWords(searchWords);
-    // returnGifs(searchWords[5]);
+    printTopics(topics);
 })
 
 // Create a click handler that calls the returnGifs function when an element with class "search-button" is clicked
-$("body").on("click", ".search-button", function(event) {
+$("body").on("click", ".search-button", function() {
     var keyWord = $(this).attr("data");
     returnGifs(keyWord);
 })
 
 // Create a click handler that changes img src from still to gif or vice-versa when clicked
-$("body").on("click", "img", function(event) {
+$("body").on("click", "img", function() {
     if ($(this).attr("src") === ($(this).attr("data-still"))) {
     var dataGif = $(this).attr("data-gif");
     $(this).attr('src', $(this).attr("data-gif"));
@@ -77,12 +77,11 @@ $("body").on("click", "img", function(event) {
         $(this).attr('src', $(this).attr("data-still"));
     }
 })
-// Create a function (addButton) that gets value from a user input form
 
-    // When called, function creates a button with the text of the value
-
-    // Adds data-value attribute to the button equal to the input value
-
-    // Appends button to the #button-display div in the document
-
-// Create a click handler to call addButton function when submit button is clicked.
+// Create an event listener that gets value from a user input form and renders it as a search button, added to the existing search buttons
+$("#submit-button").on("click", function(event) {
+    event.preventDefault();
+    var newVal = []
+    newVal.push($("#add-emotion").val().trim())
+    printTopics(newVal);
+})
