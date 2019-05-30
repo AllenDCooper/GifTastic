@@ -25,6 +25,8 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?q="
 // Create a function (returnGifs) that takes a string as an assignment, and that uses Ajax get method to return ten gifs and their ratings for the search term, and then prints them to the page.
 
 function returnGifs(string) {
+    // clear out gif display
+    $("#gif-display").text("")
     // Creates a queryURL for Ajax method that includes the GIPHY API url + "q=" + stringparameter + "&api_key=" + APIkey + "&limit=10"
     $.ajax({
         url: "https://api.giphy.com/v1/gifs/search?q=" + string + "&api_key=" + apiKey + "&limit=11",
