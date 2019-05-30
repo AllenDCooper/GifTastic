@@ -37,7 +37,7 @@ function returnGifs(string) {
         for (i = 0; i < 10; i++) {
             // function stores the still url as the data-still attribute for the image
             var gifImage = $("<img>");
-            gifImage.attr("id", "gif-image");
+            gifImage.attr("class", "gif-image");
             var gifURLString = response.data[i].images.fixed_height_small_still.url; 
             gifImage.attr('data-still', gifURLString);
 
@@ -48,13 +48,18 @@ function returnGifs(string) {
             var dataStill = gifImage.attr('data-still');
             gifImage.attr('src', dataStill);
 
-            // function creates a label element for each object.rating
+            // function creates a heading element for each object.rating
             var gifRating = $("<h4>");
             var gifRatingString = "rating: " + response.data[i].rating;
+
+            // function creates a div tag to store the img and heading
+            var gifDiv = $("<div>");
+            gifDiv.addClass("gif-div");
+            gifDiv.append(gifImage, gifRating);
             
             // function appends both the img and label element to the #gif-display div in the document
             gifRating.text(gifRatingString);
-            $("#gif-display").append(gifImage, gifRating);
+            $("#gif-display").append(gifDiv);
         }
     })
 }
@@ -84,4 +89,5 @@ $("#submit-button").on("click", function(event) {
     var newVal = []
     newVal.push($("#add-emotion").val().trim())
     printTopics(newVal);
+    $("form").trigger("reset");
 })

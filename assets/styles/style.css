@@ -1,0 +1,44 @@
+.gif-div {
+    float: left;
+    margin: 10px;
+}
+
+.clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+    }
+
+.search-button {
+    margin: 5px;
+}
+
+section {
+    width: 50%;
+    clear: right;
+}
+
+#button-display {
+    margin: 10px;
+    float: left;
+    width: 50%;
+}
+
+#form-display {
+    float: right;
+    margin-right: 0 auto;
+}
+
+#gif-display {
+    width: 100%;
+    background-color: gray;
+}
+
+form {
+    margin: 15px;
+    width: 200px;
+}
+
+

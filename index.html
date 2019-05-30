@@ -10,14 +10,17 @@
     <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
 </head>
 <body>
-    <div id="button-display"></div>
-    <div id="gif-display"></div>
-    <form id="submit">
-        <label>Add an emotion</label>
-        <input type="text" id="add-emotion">
-        <button id="submit-button" type="submit">Submit</button>
-    </form>
-
+    <header class="clearfix">
+        <div id="button-display"></div>
+        <div id="form-display">
+            <form id="submit">
+                <label>Add an emotion</label>
+                <input type="text" id="add-emotion">
+                <button id="submit-button" type="submit">Submit</button>
+            </form>
+        </div>
+    </header>
+    <section id="gif-display"></section>
     <!-- jQuery library-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- JavaScript code -->
