@@ -59,6 +59,10 @@ p {
     margin: 0px;
 }
 
+#header {
+    padding: 10px;
+}
+
 /* media queries */
 
 @media screen and (max-width: 640px) {
