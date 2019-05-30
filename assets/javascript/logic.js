@@ -1,5 +1,5 @@
 // Create an array (var searchWords) of search words
- var topics = ["anger", "annoyance", "sadness", "jealousy", "joy", "confusion", "kindness", "love", "hope", "eagerness"]
+ var topics = ["angry", "annoyed", "sad", "jealous", "joyful", "confused", "helpful", "love", "hopeful", "eager", "frustrated", "insulted", "elated", "hate", "sarcasm"]
 
 // Create a function (printTopics) that takes an array as a assignment
 
