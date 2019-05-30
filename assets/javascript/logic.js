@@ -20,18 +20,35 @@ function printSearchWords (arr) {
 }
 
 var apiKey = "59kZCC8G5bl8MHavpRjygnwpzG1ssGC4"
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" 
 
 // Create a function (returnGifs) that takes a string as an assignment, and that uses Ajax get method to return ten gifs and their ratings for the search term, and then prints them to the page.
 
+function returnGifs(string) {
     // Creates a queryURL for Ajax method that includes the GIPHY API url + "q=" + stringparameter + "&api_key=" + APIkey + "&limit=10"
+    $.ajax({
+        url: "https://api.giphy.com/v1/gifs/search?q=" + string + "&api_key=" + apiKey + "&limit=11",
+        method: "GET",
+    }).then(function(response){
+        // When called, function loops through the returned data array, creating an img element for each object
+        for (i = 0; i < 9; i++) {
+            // function stores the still url as the src attribute for the image
+            var gifImage = $("<img>");
+            var gifURLString = response.data[i].images.fixed_height_small_still.url; 
+            gifImage.attr('src', gifURLString);
 
-    // When called, function loops through the returned data array, creating an img element for each object
-
-        // function stores the object.url as the src attribute for the image
-
-        // function creates a label element for each object.rating
-
-        // function appends both the img and label element to the #gif-display div in the document
+            // function creates a label element for each object.rating
+            var gifRating = $("<h4>");
+            var gifRatingString = response.data[i].rating;
+            
+            // function appends both the img and label element to the #gif-display div in the document
+            gifRating.text(gifRatingString);
+            $("#gif-display").append(gifImage, gifRating);
+        }
+    })
+}
+printSearchWords(searchWords);
+returnGifs(searchWords[5]);
 
 // Create a click handler that calls the returnGifs function when an element with class "search-button" is clicked
 
