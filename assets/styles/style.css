@@ -58,3 +58,19 @@ h1 {
 p {
     margin: 0px;
 }
+
+/* media queries */
+
+@media screen and (max-width: 640px) {
+    #button-display {
+        width: 100%;
+    }
+    
+    #form-display {
+        margin: 0 auto;
+        float: none;
+    }
+    #submit {
+        display: inline;
+    }
+}
