@@ -57,12 +57,17 @@ function returnGifs(string) {
 }
 $(document).ready(function() {
     printSearchWords(searchWords);
-    returnGifs(searchWords[5]);
+    // returnGifs(searchWords[5]);
 })
 
 // Create a click handler that calls the returnGifs function when an element with class "search-button" is clicked
+$("body").on("click", ".search-button", function(event) {
+    var keyWord = $(this).attr("data");
+    returnGifs(keyWord);
+})
+
+// Create a click handler that changes img src from still to gif or vice-versa when clicked
 $("body").on("click", "img", function(event) {
-    // if img is displaying still, changes it to gif, and vice-versa
     if ($(this).attr("src") === ($(this).attr("data-still"))) {
     var dataGif = $(this).attr("data-gif");
     $(this).attr('src', $(this).attr("data-gif"));
