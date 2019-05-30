@@ -49,7 +49,7 @@ function returnGifs(string) {
             gifImage.attr('src', dataStill);
 
             // function creates a heading element for each object.rating
-            var gifRating = $("<h4>");
+            var gifRating = $("<p>");
             var gifRatingString = "rating: " + response.data[i].rating;
 
             // function creates a div tag to store the img and heading
@@ -69,8 +69,12 @@ $(document).ready(function() {
 
 // Create a click handler that calls the returnGifs function when an element with class "search-button" is clicked
 $("body").on("click", ".search-button", function() {
+    $(".search-button").css('background-color', "#DDDDDD");
+    $(".search-button").css('color', "#000000");
     var keyWord = $(this).attr("data");
     returnGifs(keyWord);
+    $(this).css('background-color', "#003366");
+    $(this).css('color', "white");
 })
 
 // Create a click handler that changes img src from still to gif or vice-versa when clicked

@@ -1,6 +1,11 @@
+html {
+    background-image: url("../images/dark-honeycomb.png");
+}
+
 .gif-div {
     float: left;
-    margin: 10px;
+    margin: 5px 10px;
+    color: white;
 }
 
 .clearfix:after {
@@ -28,7 +33,7 @@ section {
 
 #form-display {
     float: right;
-    margin-right: 0 auto;
+    margin: 0 auto;
 }
 
 #gif-display {
@@ -39,6 +44,10 @@ section {
 form {
     margin: 15px;
     width: 200px;
+}
+
+input {
+    margin-bottom: 10px;
 }
 
 
