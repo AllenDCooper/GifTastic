@@ -1,14 +1,25 @@
 // Create an array (var searchWords) of search words
+ var searchWords = ["anger", "annoyance", "sadness", "jealousy", "joy", "confusion", "kindness", "love", "hope", "eagerness"]
 
 // Create a function (printSearchWords) that takes an array as a assignment
 
+function printSearchWords (arr) {
+
     // When called, function loops through the array, creating a button for each value in the array
+    for (i = 0; i < arr.length; i++) {
+        var addButton = $("<button>")
+        addButton.text(arr[i]);
 
         // adds a class "search-button" to each button
-
+        addButton.addClass("search-button");
         // stores the value as a data attribute in the button
-
+        addButton.attr("data", arr[i]);
         // appends the buttons to the #button-display div in the document
+        $("#button-display").append(addButton);
+    }
+}
+
+var apiKey = "59kZCC8G5bl8MHavpRjygnwpzG1ssGC4"
 
 // Create a function (returnGifs) that takes a string as an assignment, and that uses Ajax get method to return ten gifs and their ratings for the search term, and then prints them to the page.
 
