@@ -32,14 +32,22 @@ function returnGifs(string) {
     }).then(function(response){
         // When called, function loops through the returned data array, creating an img element for each object
         for (i = 0; i < 9; i++) {
-            // function stores the still url as the src attribute for the image
+            // function stores the still url as the data-still attribute for the image
             var gifImage = $("<img>");
+            gifImage.attr("id", "gif-image");
             var gifURLString = response.data[i].images.fixed_height_small_still.url; 
-            gifImage.attr('src', gifURLString);
+            gifImage.attr('data-still', gifURLString);
+
+            // function stores the gif url as data-gif attribute for the image
+            gifImage.attr('data-gif', response.data[i].images.fixed_height_small.url)
+
+            // function prints data-still attribute to the src attribute
+            var dataStill = gifImage.attr('data-still');
+            gifImage.attr('src', dataStill);
 
             // function creates a label element for each object.rating
             var gifRating = $("<h4>");
-            var gifRatingString = response.data[i].rating;
+            var gifRatingString = "rating: " + response.data[i].rating;
             
             // function appends both the img and label element to the #gif-display div in the document
             gifRating.text(gifRatingString);
@@ -47,11 +55,21 @@ function returnGifs(string) {
         }
     })
 }
-printSearchWords(searchWords);
-returnGifs(searchWords[5]);
+$(document).ready(function() {
+    printSearchWords(searchWords);
+    returnGifs(searchWords[5]);
+})
 
 // Create a click handler that calls the returnGifs function when an element with class "search-button" is clicked
-
+$("body").on("click", "img", function(event) {
+    // if img is displaying still, changes it to gif, and vice-versa
+    if ($(this).attr("src") === ($(this).attr("data-still"))) {
+    var dataGif = $(this).attr("data-gif");
+    $(this).attr('src', $(this).attr("data-gif"));
+    } else {
+        $(this).attr('src', $(this).attr("data-still"));
+    }
+})
 // Create a function (addButton) that gets value from a user input form
 
     // When called, function creates a button with the text of the value
