@@ -67,11 +67,14 @@ p {
 
 @media screen and (max-width: 640px) {
     #button-display {
-        width: 100%;
+        width: auto;
     }
     
     #form-display {
         margin: 0 auto;
         float: none;
+    }
+    header {
+        width: 100%;
     }
 }

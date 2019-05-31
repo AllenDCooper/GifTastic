@@ -38,11 +38,11 @@ function returnGifs(string) {
             // function stores the still url as the data-still attribute for the image
             var gifImage = $("<img>");
             gifImage.attr("class", "gif-image");
-            var gifURLString = response.data[i].images.fixed_height_small_still.url; 
+            var gifURLString = response.data[i].images.fixed_height_still.url; 
             gifImage.attr('data-still', gifURLString);
 
             // function stores the gif url as data-gif attribute for the image
-            gifImage.attr('data-gif', response.data[i].images.fixed_height_small.url)
+            gifImage.attr('data-gif', response.data[i].images.fixed_height.url)
 
             // function prints data-still attribute to the src attribute
             var dataStill = gifImage.attr('data-still');
